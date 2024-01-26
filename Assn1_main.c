@@ -21,7 +21,7 @@ void show_pointer(void *);
 int  mask_LSbits(int);
 
 int main() {
-    int ival = 12345;
+    int ival = -12345;
     float fval = (float) ival;
     int *pval = &ival;
 
@@ -29,6 +29,7 @@ int main() {
     show_float(fval);
     show_pointer(pval);
 
+    show_bits(ival);
 /* Add your test cases here in order
    to test the functions you have modified 
    and the functions you have created. */

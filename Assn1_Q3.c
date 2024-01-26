@@ -43,42 +43,20 @@ void show_bytes_2(byte_pointer start, size_t len) {
 // Question 3 d.
 void show_bits(int decimal) {
 	int number;
-  int remainder;
-  int last;
-  int arraySize;
   int i;
-  int isNegative;
-  arraySize = 32;
-  int binaryNum[arraySize];
-  last = 31; // 31 is the last index in a 32 element array
+  unsigned int size;
+  unsigned int mask;
   number = decimal;
-  isNegative = 0;
 
-  if (number < 0) {
-    number = number * -1;
-    isNegative = 1;
-  }
+  size = sizeof(unsigned int);
+  mask = 1 << (size * 8 - 1); // shifts so that you can mask the MSB
 
-  // initalize the array to 0
-  for (i = 0; i < arraySize; i++) {
-    binaryNum[i] = 0;
+  for (i = 0; i < size*8; i++) {
+    printf("%u", number&mask ? 1 : 0); // %d\n", number&mask ? 1 : 0, number);
+    number = number << 1;
   }
+  printf("\n");
   
-  // construct the binary number from right to left
-  while(number != 1) {
-    remainder = number % 2;
-    number = number / 2;
-    binaryNum[last] = remainder;
-    last--;
-  }
-  binaryNum[last] = 1; // sets the final binary digit to be 1 as the loop was exited early
-  
-  if (isNegative = 1);
-
-  for (i = 0; i < arraySize; i++) {
-
-  }
-
   return; 
 }	
 
