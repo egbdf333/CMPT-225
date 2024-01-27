@@ -37,7 +37,7 @@ int main() {
     n = 0; // change test cases here
 
     result = mask_LSbits(n);
-    printf("%d", result);
+    printf("%d\n", result);
 
 
     return 0;
