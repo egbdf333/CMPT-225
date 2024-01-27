@@ -44,15 +44,17 @@ void show_bytes_2(byte_pointer start, size_t len) {
 void show_bits(int decimal) {
 	int number;
   int i;
-  unsigned int size;
-  unsigned int mask;
+  int n;
+  int mask;
+  int binaryDigit;
   number = decimal;
+  n = sizeof(unsigned int) * 8;
 
-  size = sizeof(unsigned int);
-  mask = 1 << (size * 8 - 1); // shifts so that you can mask the MSB
+  mask = 1 << (n - 1); // create mask by shifting by n, subtracting 1, same concept as Q3e
 
-  for (i = 0; i < size*8; i++) {
-    printf("%u", number&mask ? 1 : 0); // %d\n", number&mask ? 1 : 0, number);
+  for (i = 0; i < n; i++) {
+    binaryDigit = (number&mask ? 1 : 0); // binary num logic help from Stack Overflow
+    printf("%u", binaryDigit); 
     number = number << 1;
   }
   printf("\n");
@@ -63,11 +65,29 @@ void show_bits(int decimal) {
 
 // Question 3 e.
 int mask_LSbits(int n) {
-	
-  // put your code here!
+  // if n >= w
+  int w;
+  w = sizeof(int)*8;
+  int mask;
 
-  // feel free to modify this return statement if needed
-  return 0; 
+  if (n >= w) {
+    // mask of n >= w is all 1s. For unsigned int is a very large number, for signed is -1
+    mask = -1;
+  }
+
+  if (n <= 0) {
+    // mask of n <= 0 is just all 0s
+    mask = 0;
+  }
+
+  // for normal case
+  if (0 < n < w) {
+    // to create mask, you need shift 1 by n times then subtract by 1
+    // e.g. you want to create a mask for 00000010. shift 1 by 2 times 1 -> 00000100, then subtract 1 00000100 -> 00000011 which is the resultant bit mask
+    mask = (1 << n) - 1;
+  }
+
+  return mask; 
 }
 
 void show_int(int x) {
