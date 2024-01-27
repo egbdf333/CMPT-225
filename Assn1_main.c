@@ -3,8 +3,8 @@
  *
  * Description: Test driver for Assn1_Q3.c
  *
- * Authors: AL + <your name>
- * Student number: <your student number>
+ * Authors: AL + Linus Pui
+ * Student number: 301554378
  */
  
 #include <stdio.h>
@@ -21,18 +21,24 @@ void show_pointer(void *);
 int  mask_LSbits(int);
 
 int main() {
-    int ival = -12345;
+    int ival = -12345; // tested various numbers
     float fval = (float) ival;
     int *pval = &ival;
 
     show_int(ival);
     show_float(fval);
     show_pointer(pval);
-
     show_bits(ival);
-/* Add your test cases here in order
-   to test the functions you have modified 
-   and the functions you have created. */
+
+
+    // test cases 0, 2 and 15, all produce expected result
+    int result;
+    int n;
+    n = 0; // change test cases here
+
+    result = mask_LSbits(n);
+    printf("%d", result);
+
 
     return 0;
 
